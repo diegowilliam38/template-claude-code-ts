@@ -3,7 +3,7 @@
 ## Os oito pilares
 
 ```
-template-claude-code/
+template-claude-code-ts/
 │
 ├── CLAUDE.md              [1] O mapa — carregado em toda sessão
 │
@@ -266,6 +266,8 @@ cd meu-projeto-existente
 git clone --depth=1 https://github.com/ecodelearn/template-claude-code-ts.git /tmp/cc-template
 cd /tmp/cc-template && npm install && npm run build
 node dist/adopt.js --tool claude --target /caminho/para/meu-projeto-existente
+# ou
+node dist/adopt.js --tool gemini --target /caminho/para/meu-projeto-existente
 rm -rf /tmp/cc-template
 ```
 
@@ -276,7 +278,7 @@ Depois, `/project-adopt` mapeia o codebase automaticamente antes de qualquer con
 ## Os dois repositórios
 
 ```
-ecodelearn/template-claude-code   ← este repositório
+ecodelearn/template-claude-code-ts   ← este repositório
   Cada projeto clona e tem sua própria instância
   Memória, specs e agent-memory ficam aqui, versionados com o código
 

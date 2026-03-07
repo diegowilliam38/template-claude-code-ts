@@ -1,16 +1,16 @@
-# template-claude-code
+# template-claude-code-ts
 
-Template base para projetos com Claude Code. Estrutura pronta com memória persistente, gestão de specs por feature, skills com `/slash-commands`, agents isolados, regras por caminho de arquivo e hooks de segurança — para uso solo ou em times remotos.
+Template base para projetos com Claude Code e Gemini CLI. Estrutura pronta com memória persistente, gestão de specs por feature, skills com `/slash-commands`, agents isolados, regras por caminho de arquivo e hooks de segurança — para uso solo ou em times remotos.
 
 ## O problema que este template resolve
 
-Toda vez que você abre o Claude Code em um projeto, ele não sabe nada:
+Toda vez que você abre a ferramenta de coding agent em um projeto, ela não sabe nada:
 - Qual é a stack?
 - Quais são as regras do time?
 - O que já foi tentado e não funcionou?
 - O que está sendo implementado agora?
 
-Com este template, Claude responde tudo isso sozinho antes de você digitar a primeira mensagem.
+Com este template, o agente responde tudo isso sozinho antes de você digitar a primeira mensagem.
 
 ## Como funciona
 
@@ -47,7 +47,7 @@ Outro dev (ou outra sessão) pega o trabalho
 
 **Projeto novo:**
 ```bash
-gh repo create meu-projeto --template ecodelearn/template-claude-code --private --clone
+gh repo create meu-projeto --template ecodelearn/template-claude-code-ts --private --clone
 cd meu-projeto && claude
 # Claude detecta MEMORY.md vazio e inicia /project-init automaticamente
 ```
@@ -63,6 +63,18 @@ git clone --depth=1 https://github.com/ecodelearn/template-claude-code-ts.git /t
   && rm -rf /tmp/cc-template
 claude
 # Execute: /project-adopt — Claude mapeia o codebase antes de perguntar qualquer coisa
+```
+
+**Projeto existente (Gemini CLI):**
+```bash
+cd meu-projeto-existente
+git clone --depth=1 https://github.com/ecodelearn/template-claude-code-ts.git /tmp/cc-template \
+  && cd /tmp/cc-template \
+  && npm install \
+  && npm run build \
+  && node dist/adopt.js --tool gemini --target /caminho/para/meu-projeto-existente \
+  && rm -rf /tmp/cc-template
+gemini
 ```
 
 → **[Guia completo: QUICKSTART.md](QUICKSTART.md)**
@@ -101,7 +113,7 @@ npm run adopt -- --tool gemini --target /caminho/para/projeto
 ## Estrutura
 
 ```
-template-claude-code/
+template-claude-code-ts/
 ├── CLAUDE.md                         # Mapa de navegação, protocolo e regra de idioma
 ├── QUICKSTART.md                     # Guia de 5 minutos
 ├── adopt.sh                          # Script legado de adoção (Claude)

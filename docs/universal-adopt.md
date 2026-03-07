@@ -9,6 +9,7 @@ A adocao de templates para ferramentas de code-cli agora usa um core em TypeScri
 ```bash
 npm install
 npm run adopt -- --tool claude --target /caminho/para/projeto
+npm run adopt -- --tool gemini --target /caminho/para/projeto
 ```
 
 ### Opção 2: execução direta do build
@@ -17,6 +18,7 @@ npm run adopt -- --tool claude --target /caminho/para/projeto
 npm install
 npm run build
 node dist/adopt.js --tool claude --target /caminho/para/projeto
+node dist/adopt.js --tool gemini --target /caminho/para/projeto
 ```
 
 ### Opção 3 (Windows PowerShell)
@@ -24,6 +26,7 @@ node dist/adopt.js --tool claude --target /caminho/para/projeto
 ```powershell
 Set-ExecutionPolicy -Scope Process Bypass
 .\adopt.ps1 -Tool claude -Target C:\caminho\para\projeto
+.\adopt.ps1 -Tool gemini -Target C:\caminho\para\projeto
 ```
 
 ### Opção 4: instalação global local (sem repetir build)
@@ -35,11 +38,12 @@ npm link
 
 # Em qualquer projeto git:
 adopt --tool claude --target .
+adopt --tool gemini --target .
 ```
 
 Argumentos:
 
-- `--tool`: provider da ferramenta (ex.: `claude`)
+- `--tool`: provider da ferramenta (ex.: `claude`, `gemini`)
 - `--source`: repositorio git ou caminho local do template (opcional)
 - `--target`: diretorio de destino (padrao: diretorio atual)
 - `--yes`: aceita sobrescritas sem prompt

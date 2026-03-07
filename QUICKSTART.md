@@ -7,7 +7,8 @@
 
 ## Pré-requisitos
 
-- [Claude Code](https://github.com/anthropics/claude-code) instalado (`npm install -g @anthropic-ai/claude-code`)
+- [Claude Code](https://github.com/anthropics/claude-code) instalado (`npm install -g @anthropic-ai/claude-code`) **ou**
+- Gemini CLI instalado (comando `gemini` disponível no terminal)
 - [GitHub CLI](https://cli.github.com/) autenticado (`gh auth login`)
 - Git configurado
 
@@ -27,13 +28,13 @@ npm run build
 ## Passo 1 — Criar o projeto a partir do template
 
 ```bash
-gh repo create meu-projeto --template ecodelearn/template-claude-code --private --clone
+gh repo create meu-projeto --template ecodelearn/template-claude-code-ts --private --clone
 cd meu-projeto
 ```
 
 > Se preferir clonar manualmente:
 > ```bash
-> git clone git@github.com:ecodelearn/template-claude-code.git meu-projeto
+> git clone git@github.com:ecodelearn/template-claude-code-ts.git meu-projeto
 > cd meu-projeto
 > rm -rf .git && git init
 > gh repo create meu-projeto --private --source=. --push
@@ -41,11 +42,19 @@ cd meu-projeto
 
 ---
 
-## Passo 2 — Abrir o Claude Code
+## Passo 2 — Abrir a ferramenta
 
 ```bash
 claude
 ```
+
+Ou, no Gemini CLI:
+
+```bash
+gemini
+```
+
+> O fluxo detalhado abaixo usa os comandos de onboarding do Claude (`/project-init`, `/project-adopt`).
 
 ---
 
@@ -175,6 +184,18 @@ rm -rf /tmp/cc-template
 claude
 ```
 
+Alternativa para Gemini CLI:
+
+```bash
+git clone --depth=1 https://github.com/ecodelearn/template-claude-code-ts.git /tmp/cc-template
+cd /tmp/cc-template
+npm install
+npm run build
+node dist/adopt.js --tool gemini --target /caminho/para/seu-projeto
+rm -rf /tmp/cc-template
+gemini
+```
+
 No Windows (PowerShell):
 
 ```powershell
@@ -197,13 +218,18 @@ O script adiciona o `.claude/` e o `CLAUDE.md` sem tocar no seu código.
 > rm -rf /tmp/template
 > ```
 
-### Passo 2 — Executar /project-adopt
+### Passo 2 — Onboarding da ferramenta
+
+No Claude Code:
 
 ```
 /project-adopt
 ```
 
-**O que acontece:** Claude usa o agente `researcher` para mapear o codebase antes de fazer qualquer pergunta — lê os arquivos de configuração, git log, estrutura de diretórios e convenções existentes. Chega à entrevista já com respostas para as perguntas óbvias, confirmando com você em vez de perguntar do zero.
+No Gemini CLI:
+- siga o onboarding equivalente da própria ferramenta após abrir o projeto.
+
+**No fluxo Claude, o que acontece:** o agente `researcher` mapeia o codebase antes de fazer qualquer pergunta — lê arquivos de configuração, git log, estrutura de diretórios e convenções existentes.
 
 **Diferença do `/project-init`:**
 

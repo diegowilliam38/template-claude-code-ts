@@ -403,6 +403,8 @@ PROJECT_DIR="$(pwd)"
 git clone --depth=1 https://github.com/ecodelearn/template-claude-code-ts.git /tmp/cc-template
 cd /tmp/cc-template && npm install && npm run build
 node dist/adopt.js --tool claude --target "$PROJECT_DIR"
+# Para Gemini CLI, use:
+# node dist/adopt.js --tool gemini --target "$PROJECT_DIR"
 cd "$PROJECT_DIR" && rm -rf /tmp/cc-template
 ```
 

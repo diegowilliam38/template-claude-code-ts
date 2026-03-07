@@ -1,0 +1,17 @@
+from typing import Any, Dict
+
+
+class {{CLASS_NAME}}:
+    name = "{{TOOL_NAME}}"
+    description = "TODO: describe what this tool does"
+
+    def get_schema(self) -> Dict[str, Any]:
+        return {
+            "type": "object",
+            "properties": {},
+            "required": [],
+        }
+
+    def execute(self, **kwargs: Any) -> Dict[str, Any]:
+        # TODO: implement tool logic
+        return {"ok": True, "data": None}

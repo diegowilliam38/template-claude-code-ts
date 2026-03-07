@@ -11,6 +11,17 @@
 - [GitHub CLI](https://cli.github.com/) autenticado (`gh auth login`)
 - Git configurado
 
+## Instalação do template (CLI local)
+
+Se você vai usar este repositório como ferramenta de adoção, instale e gere o build:
+
+```bash
+git clone git@github.com:ecodelearn/template-claude-code-ts.git
+cd template-claude-code-ts
+npm install
+npm run build
+```
+
 ---
 
 ## Passo 1 — Criar o projeto a partir do template

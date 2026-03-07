@@ -67,6 +67,27 @@ claude
 
 → **[Guia completo: QUICKSTART.md](QUICKSTART.md)**
 
+## Instalação (este repositório)
+
+Para usar ou desenvolver o CLI de adoção deste template localmente:
+
+```bash
+git clone git@github.com:ecodelearn/template-claude-code-ts.git
+cd template-claude-code-ts
+npm install
+npm run build
+```
+
+Executar o CLI:
+
+```bash
+# uso direto
+node dist/adopt.js --tool claude --target /caminho/para/projeto
+
+# ou via script npm
+npm run adopt -- --tool claude --target /caminho/para/projeto
+```
+
 ## Estrutura
 
 ```

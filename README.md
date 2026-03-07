@@ -67,9 +67,9 @@ claude
 
 → **[Guia completo: QUICKSTART.md](QUICKSTART.md)**
 
-## Instalação (este repositório)
+## Instalação por tipo de CLI
 
-Para usar ou desenvolver o CLI de adoção deste template localmente:
+Setup base do CLI de adoção:
 
 ```bash
 git clone git@github.com:ecodelearn/template-claude-code-ts.git
@@ -78,7 +78,7 @@ npm install
 npm run build
 ```
 
-Executar o CLI:
+### Claude Code
 
 ```bash
 # uso direto
@@ -86,6 +86,16 @@ node dist/adopt.js --tool claude --target /caminho/para/projeto
 
 # ou via script npm
 npm run adopt -- --tool claude --target /caminho/para/projeto
+```
+
+### Gemini CLI
+
+```bash
+# uso direto
+node dist/adopt.js --tool gemini --target /caminho/para/projeto
+
+# ou via script npm
+npm run adopt -- --tool gemini --target /caminho/para/projeto
 ```
 
 ## Estrutura

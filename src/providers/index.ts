@@ -1,10 +1,11 @@
 import { ToolProvider } from "../types";
-import { antigravityProvider } from "./antigravity";
+import { geminiProvider } from "./antigravity";
 import { claudeProvider } from "./claude";
 
 const providers = new Map<string, ToolProvider>([
   [claudeProvider.name, claudeProvider],
-  [antigravityProvider.name, antigravityProvider],
+  [geminiProvider.name, geminiProvider],
+  ["antigravity", geminiProvider],
 ]);
 
 export function getProvider(name: string): ToolProvider | undefined {

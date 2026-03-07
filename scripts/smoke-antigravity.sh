@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT_DIR=$(cd "$(dirname "$0")/.." && pwd)
 cd "$ROOT_DIR"
-TOOL_NAME="${1:-antigravity}"
+TOOL_NAME="${1:-gemini}"
 
 echo "[smoke] build"
 npm run build >/dev/null
@@ -40,12 +40,12 @@ npx --yes --package "$TARBALL_PATH" adopt \
   --target "$PROJECT_DIR" \
   --yes >/dev/null
 
-if [[ "$TOOL_NAME" == "antigravity" ]]; then
+if [[ "$TOOL_NAME" == "gemini" || "$TOOL_NAME" == "antigravity" ]]; then
   [[ -f "$PROJECT_DIR/GEMINI.md" ]] || { echo "[smoke] FAIL: GEMINI.md not copied"; exit 1; }
   [[ -f "$PROJECT_DIR/AGENTS.md" ]] || { echo "[smoke] FAIL: AGENTS.md not copied"; exit 1; }
-  [[ -d "$PROJECT_DIR/.agent/skills" ]] || { echo "[smoke] FAIL: .agent/skills not created"; exit 1; }
-  find "$PROJECT_DIR/.agent/skills" -type f -name 'SKILL.md' | grep -q . || {
-    echo "[smoke] FAIL: no SKILL.md found in .agent/skills"
+  [[ -d "$PROJECT_DIR/.gemini/skills" ]] || { echo "[smoke] FAIL: .gemini/skills not created"; exit 1; }
+  find "$PROJECT_DIR/.gemini/skills" -type f -name 'SKILL.md' | grep -q . || {
+    echo "[smoke] FAIL: no SKILL.md found in .gemini/skills"
     exit 1
   }
 else
@@ -57,7 +57,7 @@ else
 fi
 [[ -f "$PROJECT_DIR/.gitignore" ]] || { echo "[smoke] FAIL: .gitignore not copied"; exit 1; }
 
-if [[ "$TOOL_NAME" == "antigravity" ]]; then
+if [[ "$TOOL_NAME" == "gemini" || "$TOOL_NAME" == "antigravity" ]]; then
   echo "MANTER ESTE GEMINI" > "$PROJECT_DIR/GEMINI.md"
 else
   echo "MANTER ESTE CLAUDE" > "$PROJECT_DIR/CLAUDE.md"
@@ -70,7 +70,7 @@ npx --yes --package "$TARBALL_PATH" adopt \
   --target "$PROJECT_DIR" \
   --yes >/dev/null
 
-if [[ "$TOOL_NAME" == "antigravity" ]]; then
+if [[ "$TOOL_NAME" == "gemini" || "$TOOL_NAME" == "antigravity" ]]; then
   grep -q "MANTER ESTE GEMINI" "$PROJECT_DIR/GEMINI.md" || {
     echo "[smoke] FAIL: existing GEMINI.md was overwritten"
     exit 1

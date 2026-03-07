@@ -1,7 +1,7 @@
 import { ToolProvider } from "../types";
 
-export const antigravityProvider: ToolProvider = {
-  name: "antigravity",
+export const geminiProvider: ToolProvider = {
+  name: "gemini",
   defaultSource: "ecodelearn/template-claude-code-ts",
   copyRules: [
     {
@@ -18,7 +18,7 @@ export const antigravityProvider: ToolProvider = {
     },
     {
       source: ".claude/skills",
-      destination: ".agent/skills",
+      destination: ".gemini/skills",
       overwrite: "prompt",
       required: false,
     },
@@ -30,7 +30,9 @@ export const antigravityProvider: ToolProvider = {
     },
   ],
   nextSteps: [
-    "Abra a ferramenta na raiz do projeto (ex.: `antigravity`).",
+    "Abra a ferramenta na raiz do projeto (ex.: `gemini`).",
     "Rode o onboarding inicial para mapear o projeto.",
   ],
 };
+
+export const antigravityProvider = geminiProvider;

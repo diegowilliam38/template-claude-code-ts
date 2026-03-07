@@ -12,7 +12,8 @@
     "start": "node dist/adopt.js",
     "adopt": "npm run build && node dist/adopt.js",
     "adopt:win": "powershell -ExecutionPolicy Bypass -File ./adopt.ps1",
-    "test:smoke:antigravity": "bash ./scripts/smoke-antigravity.sh"
+    "test:smoke:gemini": "bash ./scripts/smoke-antigravity.sh gemini",
+    "test:smoke:antigravity": "bash ./scripts/smoke-antigravity.sh antigravity"
   },
   "devDependencies": {
     "@types/node": "^22.13.10",

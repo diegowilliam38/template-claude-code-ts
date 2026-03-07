@@ -44,12 +44,12 @@ Argumentos:
 - `--target`: diretorio de destino (padrao: diretorio atual)
 - `--yes`: aceita sobrescritas sem prompt
 
-### Notas para `--tool antigravity`
+### Notas para `--tool gemini`
 
 - Copia `GEMINI.md` e `AGENTS.md` (sem sobrescrever se ja existirem).
-- Copia skills para `.agent/skills` (escopo do workspace no Antigravity).
-- Nao copia `.claude/` (modo minimalista para Antigravity).
-- Para skills globais do usuario, use `~/.gemini/antigravity/skills/<skill-folder>/`.
+- Copia skills para `.gemini/skills` (escopo do workspace no Gemini CLI).
+- Nao copia `.claude/` (modo minimalista para Gemini CLI).
+- `--tool antigravity` segue aceito como alias legado de compatibilidade.
 
 Parâmetros no PowerShell:
 

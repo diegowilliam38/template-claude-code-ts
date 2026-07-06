@@ -18,7 +18,7 @@
 
 | Spec | Slug | Prioridade | Depende de |
 |------|------|------------|------------|
-| — | — | — | — |
+| [chore-sync-template-ecosystem](chore-sync-template-ecosystem.md) | `template-claude-code-ts::chore-sync-template-ecosystem` | média | nenhuma |
 
 ---
 

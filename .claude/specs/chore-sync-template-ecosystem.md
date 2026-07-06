@@ -74,9 +74,11 @@ O objetivo declarado do usuário é que os três sejam eventualmente "template f
 
 ## Como retomar este trabalho
 
-**Estado atual:** Gap mapeado, TDD restaurado, citações do Tao portadas e decisão sobre as 2 skills genéricas registrada em `decisions.md` (não portar nenhuma). Falta só a decisão de publicação no npm, que é fora do escopo desta spec.
-**Próximo passo:** Quando o usuário priorizar publicar no npm, abrir spec própria para isso (esta spec cobre só alinhamento de conteúdo, não packaging/release).
+**Estado atual:** Gap mapeado, TDD restaurado, citações do Tao portadas e decisão sobre as 2 skills genéricas registrada em `decisions.md` (não portar nenhuma). Publicação no npm fica em backlog, sem data — depende de uma decisão maior (ver abaixo).
+**Próximo passo:** Nenhum imediato. Regra permanente daqui pra frente: sempre que `template-claude-code`, `template-claude-code-open` ou `template-claude-code-ts` receber uma mudança em protocolo/princípios/citações/skills universais, replicar nos outros dois antes de considerar a tarefa concluída.
 **Bloqueadores:** nenhum.
+
+**Backlog futuro (fora desta spec):** o usuário quer eventualmente consolidar os 3 repos numa "ecode-specs universal" — um framework único em vez de 3 paralelos. A decisão de publicar `-ts` no npm fica represada até essa consolidação amadurecer. Quando isso for priorizado, abrir spec própria (não reaproveitar esta).
 
 ---
 

@@ -1,6 +1,6 @@
 # Spec: chore-sync-template-ecosystem
 
-**Status:** `backlog`
+**Status:** `in-progress`
 **Slug:** `template-claude-code-ts::chore-sync-template-ecosystem`
 **Sprint:** —
 **Criado em:** 2026-07-06
@@ -62,19 +62,20 @@ O objetivo declarado do usuário é que os três sejam eventualmente "template f
 
 ## Tarefas
 
-- [ ] Atualizar o clone local de `template-claude-code-ts` e revisar histórico completo desde `0b75bcd` (initial universal code-cli template)
-- [ ] Mapear feature gap completo entre os 3 repos (skills, docs, protocolo)
-- [ ] Decidir com o usuário o que é universal vs. específico de canal
-- [ ] Portar citações do Tao of Programming para `CLAUDE.md`, `GEMINI.md` e skills equivalentes do `-ts`
+- [x] Atualizar o clone local de `template-claude-code-ts` e revisar histórico completo desde `0b75bcd` (initial universal code-cli template)
+- [x] Mapear feature gap completo entre os 3 repos (skills, docs, protocolo) — achado real: TDD Red/Green/Refactor tinha sumido do `-ts` inteiro (CLAUDE.md, AGENTS.md, GEMINI.md, code-reviewer.md, planner.md), provavelmente perdido na reescrita `e800c63`. `hooks/`, `researcher.md`, `.claude/rules/` e `.claude/references.md` são idênticos nos 3 — sem drift aí.
+- [x] Portar citações do Tao of Programming para `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `spec-create/SKILL.md`, `bugfix/SKILL.md` e `docs/team-workflow.md` do `-ts` (commit `40d3329`)
+- [x] Restaurar a disciplina de TDD Red/Green/Refactor que faltava em `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `code-reviewer.md`, `planner.md` e `bugfix/SKILL.md` (mesmo commit `40d3329`)
+- [ ] Decidir com o usuário o que fazer com as 2 skills genéricas do `-ts` (`git-commit-formatter`, `license-header-adder`) — candidatas a também existir no privado/`-open`, diferente das outras 3 (`adk-tool-scaffold`, `database-schema-validator`, `json-to-pydantic`) que são nichadas e cabem só aqui
 - [ ] Registrar decisão de publicação (ou adiamento) no npm em `decisions.md`
-- [ ] Atualizar `20 Wiki/Tao of Programming` e `20 Wiki/Agentes/Template Claude Code` no vault com o resultado
+- [x] Atualizar `20 Wiki/Tao of Programming` e `20 Wiki/Agentes/Template Claude Code` no vault com o resultado
 
 ---
 
 ## Como retomar este trabalho
 
-**Estado atual:** Spec criada a partir do mapeamento de 2026-07-06; nenhuma tarefa iniciada ainda.
-**Próximo passo:** Mapear o feature gap completo entre os 3 repos (primeira tarefa da lista acima) antes de qualquer decisão de design.
+**Estado atual:** Gap mapeado, TDD restaurado e citações do Tao portadas (commit `40d3329`, push em `master`). Falta só a decisão sobre as 2 skills genéricas e a decisão de publicação no npm.
+**Próximo passo:** Perguntar ao usuário se `git-commit-formatter` e `license-header-adder` devem ser portadas para `template-claude-code` e `template-claude-code-open`; registrar a resposta em `decisions.md`.
 **Bloqueadores:** nenhum.
 
 ---

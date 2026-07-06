@@ -10,7 +10,7 @@
 
 | Spec | Slug | Próximo passo imediato | Responsável |
 |------|------|------------------------|-------------|
-| — | — | — | — |
+| [chore-sync-template-ecosystem](chore-sync-template-ecosystem.md) | `template-claude-code-ts::chore-sync-template-ecosystem` | Decidir se `git-commit-formatter`/`license-header-adder` viram universais | — |
 
 ---
 
@@ -18,7 +18,7 @@
 
 | Spec | Slug | Prioridade | Depende de |
 |------|------|------------|------------|
-| [chore-sync-template-ecosystem](chore-sync-template-ecosystem.md) | `template-claude-code-ts::chore-sync-template-ecosystem` | média | nenhuma |
+| — | — | — | — |
 
 ---
 

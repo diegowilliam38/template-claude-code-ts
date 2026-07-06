@@ -30,6 +30,8 @@
 | Skills disponiveis | `.claude/skills/README.md` |
 | Agentes especializados | `.claude/agents/README.md` |
 
+> Lei do Menor Espanto: "the program should always respond to the user in the way that astonishes him least." - Tao of Programming, 4.1
+
 ## Principios inegociaveis
 
 - Priorize simplicidade e clareza
@@ -37,4 +39,5 @@
 - Documente decisoes importantes em `decisions.md`
 - Mantenha specs atualizadas para handoff sem briefing
 - Em falhas inesperadas: pare, preserve evidencia, repleneje
-- Done = criterio de aceite + testes + verificacao documentada
+- TDD Red/Green/Refactor: teste antes do codigo (Red), minimo pra passar (Green), refatore sem quebrar (Refactor) - sem excecao
+- Done = criterio de aceite + testes + ciclo TDD verificado + verificacao documentada

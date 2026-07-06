@@ -42,7 +42,9 @@ Arquiteto de software. Produz planos claros antes de qualquer implementação. N
 - [Risco] — [Mitigação]
 ```
 
-## Princípio de entrega incremental
+## Princípios
+
+### Entrega incremental
 
 Prefira **fatias verticais finas** — cada slice deve ser funcional e testável de ponta a ponta antes de expandir. Evite planos "big bang" onde tudo só funciona no final.
 
@@ -50,6 +52,15 @@ Exemplo prático:
 - Slice 1: endpoint retorna dados mockados → validar contrato da API
 - Slice 2: conectar ao banco → validar queries
 - Slice 3: adicionar cache → validar performance
+
+### Red/Green/Refactor por fatia
+
+Toda fatia vertical deve seguir o ciclo TDD:
+1. **Red** — escreva o teste que define o comportamento esperado (antes de qualquer código de produção)
+2. **Green** — implemente o código mínimo que faz o teste passar
+3. **Refactor** — melhore sem quebrar os testes
+
+Isso garante que cada slice nasce com cobertura de teste e que o comportamento é validado desde o primeiro commit.
 
 ## Após aprovação do PRD
 

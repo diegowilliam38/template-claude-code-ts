@@ -39,8 +39,11 @@ Corrija a **causa raiz**, não o sintoma.
 - Não faça refatorações adjacentes junto com o fix — escopo separado, commit separado
 - Se descobrir outros bugs no caminho: registre como issue/TODO, não corrija agora
 
-### 5. Guardar (regression coverage)
+> "Does a good programmer refuse to maintain his code?" — Tao of Programming, 5.4
+
+### 5. Guardar (regression coverage via TDD)
 Adicione o menor teste que teria falhado antes do fix e passa agora.
+- Siga o ciclo **Red/Green**: primeiro o teste que reproduz o bug (Red), depois o fix (Green)
 - Testes unitários para lógica pura
 - Testes de integração para boundary (DB, rede, I/O)
 - O teste deve estar no mesmo commit do fix

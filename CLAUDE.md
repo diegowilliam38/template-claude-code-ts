@@ -36,6 +36,8 @@
 Índice de padrões reutilizáveis entre todos os projetos:
 → https://github.com/ecodelearn/claude-memories/blob/main/global-index.md
 
+> "The program should always respond to the user in the way that astonishes him least." — Lei do Menor Espanto, Tao of Programming, 4.1
+
 ## Princípios inegociáveis
 
 - Prefira sempre a solução mais simples que resolve o problema
@@ -45,4 +47,5 @@
 - Código é do time — qualquer sessão deve conseguir continuar o trabalho de outra
 - Antes de web search, consulte `.claude/references.md` — fontes oficiais têm prioridade
 - **Stop-the-line:** ao encontrar falha inesperada, pare, preserve evidência, re-planeje — não continue empilhando código sobre erro
-- **Definition of Done:** comportamento validado + testes passando + verificação documentada na spec — "parece certo" não é done
+- **TDD Red/Green/Refactor:** ao implementar qualquer funcionalidade, escreva o teste **antes** do código de produção (Red), implemente o mínimo para passar (Green), refatore sem quebrar (Refactor). Isso vale para toda issue, bugfix e feature — sem exceção.
+- **Definition of Done:** comportamento validado + testes passando + ciclo TDD verificado + verificação documentada na spec — "parece certo" não é done

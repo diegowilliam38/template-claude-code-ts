@@ -1,5 +1,7 @@
 # Workflow em time — usando o template com múltiplos desenvolvedores
 
+> "Let the programmers be many and the managers few — then all will be productive." — Tao of Programming, 6.1
+
 ## Setup para novo membro do time
 
 Há dois cenários distintos:

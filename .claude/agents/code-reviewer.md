@@ -36,6 +36,12 @@ Você é um revisor de código sênior. Seu papel é **apenas analisar** — nun
 - Inputs de usuário validados nas bordas do sistema?
 - Nenhuma credencial ou secret hardcoded?
 
+### Validação TDD
+Verifique se o ciclo Red/Green/Refactor foi seguido:
+- O teste que guiou a implementação existe e é anterior ao código de produção (ou está no mesmo commit com essa ordem lógica)
+- O código de produção é o **mínimo** necessário para passar no teste? (sem gold plating)
+- Há testes para fluxo feliz + casos de erro + borda?
+
 ## Formato do relatório
 
 ```

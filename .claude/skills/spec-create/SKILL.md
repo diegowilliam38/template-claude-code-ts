@@ -7,6 +7,8 @@ argument-hint: "[nome-da-feature]"
 
 # Skill: spec-create
 
+> "When the program is being tested, it is too late to make design changes." — Tao of Programming, 3.1
+
 **Quando usar:** Ao iniciar uma nova feature, fase ou sprint. Pode ser invocada diretamente ou após o agente `planner` gerar um PRD aprovado.
 
 ---
@@ -19,6 +21,7 @@ Colete as informações mínimas antes de criar:
 
 1. "Qual o nome e objetivo desta feature?" (1 frase clara)
 2. "O que está fora do escopo?"
+   > O novato entregou um editor de tela, gráficos e uma interface de IA — mas esqueceu a parte financeira do pacote que lhe pediram. — Tao of Programming, 5.3 (parafraseado)
 3. "Depende de alguma outra spec para começar?"
 4. "Qual a prioridade? (alta / média / baixa)"
 

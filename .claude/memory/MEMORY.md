@@ -39,6 +39,10 @@ com GitGuardian. O nome npm escolhido é `@ecodelearn/agent-harness`; publicaç�
 continua bloqueada. O workflow evita execuções duplicadas: PRs validam branches e
 push valida apenas `master`. Próxima etapa é revisar o PR e planejar o rollout npm.
 O hardening pós-review está no PR #2, com CI verde em Linux, macOS e Windows.
+PRs #1 e #2 foram mesclados. A documentação pública bilíngue e os arquivos de
+comunidade foram concluídos no PR #3. Após review do Copilot, a matriz passou a
+testar Node 20, 22 e 24 e `CODE_OF_CONDUCT.md` entrou na allowlist pública. O
+repositório continua com a visibilidade existente e o npm permanece privado.
 
 ## Integrações ativas
 

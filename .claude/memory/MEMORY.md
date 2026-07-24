@@ -2,6 +2,7 @@
 project: template-claude-code-ts
 repo: ecodelearn/template-claude-code-ts
 stack: TypeScript, Node.js, npm
+language: pt-br
 ---
 
 # Template Claude Code TS — Memória do Projeto
@@ -37,6 +38,7 @@ com `private: true`. A matriz CI passou em Linux, macOS e Windows no PR #1, junt
 com GitGuardian. O nome npm escolhido é `@ecodelearn/agent-harness`; publicação
 continua bloqueada. O workflow evita execuções duplicadas: PRs validam branches e
 push valida apenas `master`. Próxima etapa é revisar o PR e planejar o rollout npm.
+O hardening pós-review está no PR #2, com CI verde em Linux, macOS e Windows.
 
 ## Integrações ativas
 

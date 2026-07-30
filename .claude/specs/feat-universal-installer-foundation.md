@@ -146,3 +146,46 @@ abertas em branch complementar:
 - [x] Tipar `operations` explicitamente como `CopyOperation[]`.
 - [x] Restaurar `language: pt-br` no front matter de `MEMORY.md`.
 - [x] Validar CI multiplataforma do PR complementar #2.
+
+## Checklist de release candidate — 2026-07-30
+
+Executado localmente contra o tarball empacotado (`npm pack`), simulando uma
+instalação real via `npx`, com o provider Codex e um repositório git de teste:
+
+- [x] **Tarball**: `npm pack` gera 28 arquivos, extraído e executado como pacote
+  instalado — sem depender do checkout de desenvolvimento.
+- [x] **Instalação real** (`--yes`, sem `--dry-run`): copia `AGENTS.md`,
+  `.claude`, `.agents/skills`, `.gitignore`; registra transação com ID e comando
+  de rollback.
+- [x] **Update/conflito**: após editar `AGENTS.md` localmente, nova execução em
+  `--dry-run` mostra `[PRESERVAR]` para `AGENTS.md`/`.gitignore` (overwrite:
+  never) e `[PERGUNTAR]` para `.claude`/`.agents/skills` (overwrite: prompt) —
+  comportamento correto, nada sobrescrito silenciosamente.
+- [x] **Rollback** (`--rollback <id>`): restaura o estado exato de antes da
+  instalação — `AGENTS.md`, `.claude`, `.agents`, `.gitignore` removidos,
+  `README.md` original intacto.
+- [x] **Desinstalação**: não existe um comando `--uninstall` dedicado — o fluxo
+  é `--rollback` (remove o que foi adicionado) seguido de `--forget` (apaga o
+  backup). Testado e funcionou; vale documentar esse fluxo explicitamente no
+  README/CLI reference, já que "uninstall" não aparece literal no `--help`.
+
+**Atualização 2026-07-30, resolvida:** a PR #4 (aberta de
+`agent/bilingual-public-docs`) nunca disparou CI porque a branch tinha
+divergido do `master` antes do squash-merge da PR #3 — o `merge-base` que o
+GitHub usava ainda era o commit anterior àquele squash, então o diff mostrava
+38 arquivos e `mergeable: CONFLICTING`. Fechada e substituída pela PR #5,
+cortada direto do `master` atual com só o commit real (`cherry-pick`) — diff
+de 13 arquivos, `mergeable: MERGEABLE`, `mergeStateStatus: CLEAN`. A matriz
+completa rodou e passou: `windows-latest/Node20`, `ubuntu-latest/Node20`,
+`ubuntu-latest/Node22`, `ubuntu-latest/Node24`, `macos-latest/Node20`, além do
+GitGuardian. **Windows/macOS/Linux estão validados para este commit.**
+
+**Pendências que ainda ficam em aberto:**
+
+- **Acesso ao escopo npm `@ecodelearn`.** `npm whoami` confirmou login como
+  `ecodelearn` em 2026-07-30, mas acesso de publish ao escopo (`npm access` ou
+  uma tentativa real de `publish`) ainda não foi testado.
+- Só o provider Codex foi exercitado ponta a ponta neste checklist; os demais
+  (Claude, Gemini/Antigravity) compartilham o mesmo motor de transação já
+  coberto pelos testes automatizados, mas não foram re-testados manualmente
+  aqui.

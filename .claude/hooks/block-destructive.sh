@@ -48,4 +48,12 @@ for pattern in "${BLOCKED[@]}"; do
     fi
 done
 
+# Leitura de arquivos de segredo via shell (permissions.deny cobre só o tool Read)
+SECRET_RE='(cat|less|more|head|tail|grep|rg|sed|awk|cp|mv|base64|xxd|strings|source|\.)[[:space:]]+[^|;&]*(\.env([^a-zA-Z0-9_-]|$)|\.env\.[a-zA-Z0-9_.-]+|\.pem([^a-zA-Z0-9_]|$)|id_rsa|id_ed25519)'
+if echo "$COMMAND" | grep -Eq "$SECRET_RE" && ! echo "$COMMAND" | grep -Eq '\.env\.(example|sample|template)'; then
+    echo "[BLOQUEADO] Leitura de arquivo de segredo (.env, chave, pem) pelo shell."
+    echo "Peça ao usuário o valor necessário."
+    exit 2
+fi
+
 exit 0

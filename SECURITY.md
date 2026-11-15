@@ -15,8 +15,8 @@ steps, expected impact, and a minimal proof of concept without real secrets.
 Maintainers will acknowledge the report, assess severity, prepare a fix and
 coordinate disclosure. No guaranteed response SLA is currently offered.
 
-Supported code is the current `master` branch. The npm package is not yet
-published.
+Supported code is the current `master` branch. The published npm package
+(`@ecodelearn/agent-harness`) is supported at its latest version.
 
 ## Português do Brasil
 
@@ -33,4 +33,5 @@ impacto esperado e uma prova mínima sem segredos reais.
 Os mantenedores confirmarão o recebimento, avaliarão severidade, prepararão a
 correção e coordenarão divulgação. Ainda não existe SLA garantido.
 
-O código suportado é a branch `master`. O pacote npm ainda não foi publicado.
+O código suportado é a branch `master`. O pacote npm publicado
+(`@ecodelearn/agent-harness`) é suportado na versão mais recente.

@@ -4,26 +4,22 @@
 
 INPUT=$(cat)
 
-TOOL=$(echo "$INPUT" | python3 -c "
-import sys, json
-try:
-    d = json.load(sys.stdin)
-    print(d.get('tool_name', ''))
-except:
-    print('')
-" 2>/dev/null)
+# Lê o comando com jq, depois python3. Sem nenhum dos dois, compara os padrões
+# contra o JSON bruto em vez de liberar tudo.
+if command -v jq &>/dev/null; then
+    TOOL=$(printf '%s' "$INPUT" | jq -r '.tool_name // empty' 2>/dev/null)
+    COMMAND=$(printf '%s' "$INPUT" | jq -r '.tool_input.command // empty' 2>/dev/null)
+elif command -v python3 &>/dev/null; then
+    TOOL=$(printf '%s' "$INPUT" | python3 -c 'import sys,json; print(json.load(sys.stdin).get("tool_name",""))' 2>/dev/null)
+    COMMAND=$(printf '%s' "$INPUT" | python3 -c 'import sys,json; print(json.load(sys.stdin).get("tool_input",{}).get("command",""))' 2>/dev/null)
+else
+    TOOL="Bash"
+    COMMAND="$INPUT"
+fi
 
 # Só inspeciona o tool Bash
 [[ "$TOOL" != "Bash" ]] && exit 0
-
-COMMAND=$(echo "$INPUT" | python3 -c "
-import sys, json
-try:
-    d = json.load(sys.stdin)
-    print(d.get('tool_input', {}).get('command', ''))
-except:
-    print('')
-" 2>/dev/null)
+[[ -z "$COMMAND" ]] && exit 0
 
 # Padrões bloqueados
 BLOCKED=(
@@ -41,18 +37,24 @@ BLOCKED=(
 )
 
 for pattern in "${BLOCKED[@]}"; do
-    if echo "$COMMAND" | grep -qi "$pattern"; then
-        echo "[BLOQUEADO] Comando perigoso detectado: '$pattern'"
-        echo "Se realmente necessário, execute manualmente no terminal."
+    if printf '%s' "$COMMAND" | grep -qiF -- "$pattern"; then
+        echo "[BLOQUEADO] Comando perigoso detectado: '$pattern'" >&2
+        echo "Se realmente necessário, execute manualmente no terminal." >&2
         exit 2
     fi
 done
 
-# Leitura de arquivos de segredo via shell (permissions.deny cobre só o tool Read)
-SECRET_RE='(cat|less|more|head|tail|grep|rg|sed|awk|cp|mv|base64|xxd|strings|source|\.)[[:space:]]+[^|;&]*(\.env([^a-zA-Z0-9_-]|$)|\.env\.[a-zA-Z0-9_.-]+|\.pem([^a-zA-Z0-9_]|$)|id_rsa|id_ed25519)'
-if echo "$COMMAND" | grep -Eq "$SECRET_RE" && ! echo "$COMMAND" | grep -Eq '\.env\.(example|sample|template)'; then
-    echo "[BLOQUEADO] Leitura de arquivo de segredo (.env, chave, pem) pelo shell."
-    echo "Peça ao usuário o valor necessário."
+# Leitura de arquivos de segredo via shell (permissions.deny cobre só o tool Read).
+# Proteção contra descuido, não barreira de segurança: interpretadores, variáveis
+# e cópias ainda conseguem ler esses arquivos.
+CHECK=$(printf '%s' "$COMMAND" | sed -E 's/\.env\.(example|sample|template)//g; s/id_(rsa|ed25519)[A-Za-z0-9_-]*\.pub//g')
+READERS='(cat|less|more|head|tail|grep|rg|sed|awk|base64|xxd|strings|source|\.)'
+SEP="[[:space:]/\"'=<]"
+END="(\$|[[:space:]\"'|;&>)\\])"
+SECRET="(\.env(\.[A-Za-z0-9_.-]+)?${END}|[A-Za-z0-9_.-]*\.pem${END}|id_rsa|id_ed25519)"
+if printf '%s' "$CHECK" | grep -Eq "(^|[[:space:];&|(\"])${READERS}[[:space:]]+([^|;&]*${SEP})?${SECRET}"; then
+    echo "[BLOQUEADO] Leitura de arquivo de segredo (.env, chave, pem) pelo shell." >&2
+    echo "Peça ao usuário o valor necessário." >&2
     exit 2
 fi
 
